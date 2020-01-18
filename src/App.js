@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Control from './components/Control';
-import Display from './components/Display';
+import Control from './components/Control.jsx';
+import Status from './components/Status.jsx';
 
 /* Global State Management */
 import { GlobalStateProvider } from './store/index';
@@ -9,8 +9,10 @@ import { GlobalStateProvider } from './store/index';
 const App = () => {
   return (
     <GlobalStateProvider>
-      <Control></Control>
-      <Display></Display>
+      <div className="m-2">
+        <Control></Control>
+        <Status></Status>
+      </div>
     </GlobalStateProvider>
   );
 };
