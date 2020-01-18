@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Control from './components/Control.jsx';
 import Status from './components/Status.jsx';
-import Display from './components/Display.jsx';
+import Emoji from './components/Emoji.jsx';
 
 /* Global State Management */
 import { GlobalStateProvider } from './store/index';
@@ -16,7 +16,7 @@ const App = () => {
             <Status />
           </div>
           <div className="col">
-            <Display />
+            <Emoji />
           </div>
           <div className="col">
             <Control />

@@ -2,7 +2,7 @@
 // import { useGlobalState } from '../store/index';
 import React from 'react';
 
-const Display = () => {
+const Emoji = () => {
   // const [health] = useGlobalState('health');
   // const [sleepy] = useGlobalState('sleepy');
   // const [wantToPoop] = useGlobalState('wantToPoop');
@@ -25,4 +25,4 @@ const Display = () => {
   );
 };
 
-export default Display;
+export default Emoji;
