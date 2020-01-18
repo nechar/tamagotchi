@@ -3,9 +3,12 @@ import { createGlobalState } from 'react-hooks-global-state';
 
 /* Exports */
 export const { GlobalStateProvider, useGlobalState } = createGlobalState({
-  hunger: 0,
-  sleepy: 0,
-  wantToPoop: 0,
+  hunger: 80, // percent
+  sleepy: 0, // percent
+  wantToPoop: 50, // percent
   health: 100, // percent
-  age: 0
+  age: {
+    hours: 0,
+    days: 0
+  }
 });
