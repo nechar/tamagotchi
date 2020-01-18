@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import Control from './components/Control.jsx';
 import Status from './components/Status.jsx';
 import Emoji from './components/Emoji.jsx';
