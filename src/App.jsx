@@ -11,13 +11,15 @@ const App = () => {
   return (
     <GlobalStateProvider>
       <div className="m-2">
-        <Display></Display>
         <div className="row">
           <div className="col">
-            <Control></Control>
+            <Status />
           </div>
           <div className="col">
-            <Status></Status>
+            <Display />
+          </div>
+          <div className="col">
+            <Control />
           </div>
         </div>
       </div>
