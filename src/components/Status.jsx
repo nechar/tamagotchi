@@ -10,13 +10,13 @@ const Status = () => {
   const [hungry] = useGlobalState('age');
   return (
     <section>
-      <ul class="list-group">
-        <li class="list-group-item">Health: {health}</li>
-        <li class="list-group-item">Hungry: {hungry}</li>
-        <li class="list-group-item">Sleepy: {sleepy.toString()}</li>
-        <li class="list-group-item">WantToPoop: {wantToPoop.toString()}</li>
-        <li class="list-group-item">Health: {health}</li>
-        <li class="list-group-item">Age: {age}</li>
+      <ul className="list-group">
+        <li className="list-group-item">Health: {health}</li>
+        <li className="list-group-item">Hungry: {hungry}</li>
+        <li className="list-group-item">Sleepy: {sleepy.toString()}</li>
+        <li className="list-group-item">WantToPoop: {wantToPoop.toString()}</li>
+        <li className="list-group-item">Health: {health}</li>
+        <li className="list-group-item">Age: {age}</li>
       </ul>
     </section>
   );
