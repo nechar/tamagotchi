@@ -8,9 +8,16 @@ const Display = () => {
   // const [wantToPoop] = useGlobalState('wantToPoop');
   // const [age] = useGlobalState('age');
   // const [hungry] = useGlobalState('age');
+
   return (
     <div>
-      <img src="./asset/images/emoji/006-full.svg" alt="" />
+      <style jsx>{`
+        .emoji {
+          height: 150px;
+          width: 150px;
+        }
+      `}</style>
+      <img src="./asset/images/emoji/006-full.svg" className="emoji" alt="" />
       <h1>I am hungry</h1>
     </div>
   );
