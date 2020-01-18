@@ -17,8 +17,10 @@ const Display = () => {
           width: 150px;
         }
       `}</style>
-      <img src="./asset/images/emoji/006-full.svg" className="emoji" alt="" />
-      <h1>I am hungry</h1>
+      <div className="center-text-align">
+        <img src="./asset/images/emoji/006-full.svg" className="emoji" alt="" />
+        <h1>I am hungry</h1>
+      </div>
     </div>
   );
 };

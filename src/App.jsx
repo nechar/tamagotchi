@@ -11,9 +11,15 @@ const App = () => {
   return (
     <GlobalStateProvider>
       <div className="m-2">
-        <Control></Control>
-        <Status></Status>
         <Display></Display>
+        <div className="row">
+          <div className="col">
+            <Control></Control>
+          </div>
+          <div className="col">
+            <Status></Status>
+          </div>
+        </div>
       </div>
     </GlobalStateProvider>
   );
