@@ -1,19 +1,18 @@
 import React from 'react';
 import './App.css';
+import Control from './components/Control';
+import Display from './components/Display';
 
-import Button from 'react-bootstrap/Button';
+/* Global State Management */
+import { GlobalStateProvider } from './store/index';
 
-function App() {
+const App = () => {
   return (
-    <div>
-      <Button>Feed me</Button>
-      <Button>Put me to bed</Button>
-      <Button>Pet me</Button>
-      <Button>Take me to the toilet</Button>
-      <Button>Clean it up</Button>
-      <Button>Take me to shower</Button>
-    </div>
+    <GlobalStateProvider>
+      <Control></Control>
+      <Display></Display>
+    </GlobalStateProvider>
   );
-}
+};
 
 export default App;
