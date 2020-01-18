@@ -7,11 +7,11 @@ const Emoji = () => {
   // const [sleepy] = useGlobalState('sleepy');
   // const [wantToPoop] = useGlobalState('wantToPoop');
   // const [age] = useGlobalState('age');
-  // const [hungry] = useGlobalState('age');
+  // const [hunger] = useGlobalState('age');
 
   return (
     <div>
-      <style jsx>{`
+      <style jsx="true">{`
         .emoji {
           height: 150px;
           width: 150px;
