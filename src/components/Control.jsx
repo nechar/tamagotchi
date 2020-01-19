@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import { ONE_TOMAGOTCHI_HOUR } from '../config';
 
 /* Global State Management */
 import { useGlobalState } from '../store';
@@ -14,10 +13,7 @@ const Control = () => {
   }
 
   function putMeToBed() {
-    setSleepy(100);
-    setTimeout(() => {
-      setSleepy(0);
-    }, ONE_TOMAGOTCHI_HOUR * 8);
+    setSleepy(0);
   }
 
   return (

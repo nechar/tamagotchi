@@ -6,12 +6,12 @@ function getEmoji(emotion) {
   switch (emotion) {
     case 'hungry':
       return {
-        emoji: './asset/images/emoji/026-tired.svg',
+        emoji: './asset/images/emoji/028-winking face.svg',
         text: 'I am hungry'
       };
     case 'want-to-poop':
       return {
-        emoji: './asset/images/emoji/026-tired.svg',
+        emoji: './asset/images/emoji/003-dizzy.svg',
         text: 'I want to go to the bathroom'
       };
     case 'sleepy':
@@ -27,7 +27,7 @@ function getEmoji(emotion) {
       };
     case 'unwell':
       return {
-        emoji: './asset/images/emoji/003-dizzy.svg',
+        emoji: './asset/images/emoji/008-vomiting.svg',
         text: `I feel unwell`
       };
     case 'happy':

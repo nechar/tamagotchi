@@ -9,6 +9,7 @@ const Status = () => {
   const [sleepy, setSleepy] = useGlobalState('sleepy');
   const [wantToPoop, setWantToPoop] = useGlobalState('wantToPoop');
   const [hunger, setHunger] = useGlobalState('hunger');
+  const [, setEmotion] = useGlobalState('emotion');
 
   setTimeout(() => {
     if (sleepy < 100) {
@@ -25,13 +26,20 @@ const Status = () => {
     } else {
       setAge({ days: age.days + 1, hours: 0 });
     }
+    if (hunger >= 80) {
+      setEmotion('hungry');
+    } else if (sleepy >= 80) {
+      setEmotion('sleepy');
+    } else {
+      setEmotion('happy');
+    }
   }, ONE_TOMAGOTCHI_HOUR);
 
   return (
     <section>
       <ul className="list-group">
         <li className="list-group-item">Health: {health} %</li>
-        <li className="list-group-item">hunger: {hunger} %</li>
+        <li className="list-group-item">Hunger: {hunger} %</li>
         <li className="list-group-item">Sleepy: {sleepy} %</li>
         <li className="list-group-item">WantToPoop: {wantToPoop} %</li>
         <li className="list-group-item">Health: {health} %</li>
