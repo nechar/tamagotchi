@@ -8,16 +8,24 @@ const Control = () => {
   const [, setSleepy] = useGlobalState('sleepy');
   const [, setHunger] = useGlobalState('hunger');
   const [emotion, setEmotion] = useGlobalState('emotion');
+  const [actionTaken, setActionTaken] = useGlobalState('actionTaken');
 
   function feedMe() {
-    alert('That was yummy! Thank you!');
-    setHunger(0);
+    // alert('That was yummy! Thank you!');
+    setActionTaken(true);
+    setTimeout(() => {
+      setHunger(0);
+    }, 1000);
     setEmotion('just-eaten');
   }
 
   function putMeToBed() {
-    alert('Goodnight, Owen! Have a sweet dream!');
-    setSleepy(0);
+    setActionTaken(true);
+    setTimeout(() => {
+      setSleepy(0);
+    }, 1000);
+    setEmotion('sleeping');
+    // alert('Goodnight, Owen! Have a sweet dream!');
   }
 
   return (

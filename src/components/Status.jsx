@@ -2,6 +2,7 @@
 import { useGlobalState } from '../store';
 import React, { useEffect } from 'react';
 import { ONE_TOMAGOTCHI_HOUR } from '../config';
+let defaultTimeout, sleepTimeOut;
 
 const Status = () => {
   const [age, setAge] = useGlobalState('age');
@@ -10,9 +11,10 @@ const Status = () => {
   const [wantToPoop, setWantToPoop] = useGlobalState('wantToPoop');
   const [hunger, setHunger] = useGlobalState('hunger');
   const [emotion, setEmotion] = useGlobalState('emotion');
+  const [actionTaken, setActionTaken] = useGlobalState('actionTaken');
 
   useEffect(() => {
-    setTimeout(() => {
+    defaultTimeout = setTimeout(() => {
       if (sleepy < 100) {
         setSleepy(sleepy + 5);
       }
@@ -35,7 +37,24 @@ const Status = () => {
         setEmotion('happy');
       }
     }, ONE_TOMAGOTCHI_HOUR);
+  }, [hunger]);
+
+  useEffect(() => {
+    sleepTimeOut = setTimeout(() => {
+      if (sleepy < 100) {
+        setSleepy(sleepy + 5);
+      }
+    }, ONE_TOMAGOTCHI_HOUR);
   }, [sleepy]);
+
+  useEffect(() => {
+    console.log('action');
+    if (actionTaken) {
+      clearTimeout(defaultTimeout);
+      clearTimeout(sleepTimeOut);
+      setActionTaken(false);
+    }
+  }, [actionTaken]);
 
   return (
     <section>

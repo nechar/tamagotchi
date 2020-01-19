@@ -11,5 +11,6 @@ export const { GlobalStateProvider, useGlobalState } = createGlobalState({
   age: {
     hours: 0,
     days: 0
-  }
+  },
+  actionTaken: false
 });
