@@ -7,6 +7,7 @@ export const { GlobalStateProvider, useGlobalState } = createGlobalState({
   sleepy: 0, // percent
   wantToPoop: 50, // percent
   health: 100, // percent
+  emotion: 'happy',
   age: {
     hours: 0,
     days: 0

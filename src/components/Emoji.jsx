@@ -2,8 +2,8 @@
 import { useGlobalState } from '../store/index';
 import React from 'react';
 
-function getEmotions(type) {
-  switch (type) {
+function getEmoji(emotion) {
+  switch (emotion) {
     case 'hungry':
       return {
         emoji: './asset/images/emoji/026-tired.svg',
@@ -20,12 +20,12 @@ function getEmotions(type) {
 }
 
 const Emoji = () => {
-  // const [health] = useGlobalState('health');
+  const [emotion] = useGlobalState('emotion');
   // const [sleepy] = useGlobalState('sleepy');
   // const [wantToPoop] = useGlobalState('wantToPoop');
   // const [age] = useGlobalState('age');
   // const [hunger] = useGlobalState('age');
-  const emotion = getEmotions('hungry');
+  const emoji = getEmoji(emotion);
   return (
     <div>
       <style jsx="true">{`
@@ -35,8 +35,8 @@ const Emoji = () => {
         }
       `}</style>
       <div className="center-text-align">
-        <img src={emotion.emoji} className="emoji" alt="" />
-        <h1>{emotion.text}</h1>
+        <img src={emoji.emoji} className="emoji" alt="" />
+        <h1>{emoji.text}</h1>
       </div>
     </div>
   );
