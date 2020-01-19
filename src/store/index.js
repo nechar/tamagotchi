@@ -12,5 +12,5 @@ export const { GlobalStateProvider, useGlobalState } = createGlobalState({
     hours: 0,
     days: 0
   },
-  actionTaken: false
+  actionTaken: null
 });

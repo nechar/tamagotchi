@@ -10,14 +10,11 @@ const Status = () => {
   const [sleepy, setSleepy] = useGlobalState('sleepy');
   const [wantToPoop, setWantToPoop] = useGlobalState('wantToPoop');
   const [hunger, setHunger] = useGlobalState('hunger');
-  const [emotion, setEmotion] = useGlobalState('emotion');
+  const [, setEmotion] = useGlobalState('emotion');
   const [actionTaken, setActionTaken] = useGlobalState('actionTaken');
 
   useEffect(() => {
     defaultTimeout = setTimeout(() => {
-      if (sleepy < 100) {
-        setSleepy(sleepy + 5);
-      }
       if (wantToPoop < 100) {
         setWantToPoop(wantToPoop + 5);
       }
@@ -37,6 +34,7 @@ const Status = () => {
         setEmotion('happy');
       }
     }, ONE_TOMAGOTCHI_HOUR);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hunger]);
 
   useEffect(() => {
@@ -45,15 +43,19 @@ const Status = () => {
         setSleepy(sleepy + 5);
       }
     }, ONE_TOMAGOTCHI_HOUR);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sleepy]);
 
   useEffect(() => {
-    console.log('action');
-    if (actionTaken) {
+    if (actionTaken === 'feedMe') {
       clearTimeout(defaultTimeout);
-      clearTimeout(sleepTimeOut);
-      setActionTaken(false);
+      setActionTaken(null);
     }
+    if (actionTaken === 'putMeToBed') {
+      clearTimeout(sleepTimeOut);
+      setActionTaken(null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actionTaken]);
 
   return (
@@ -63,7 +65,6 @@ const Status = () => {
         <li className="list-group-item">Hunger: {hunger} %</li>
         <li className="list-group-item">Sleepy: {sleepy} %</li>
         <li className="list-group-item">WantToPoop: {wantToPoop} %</li>
-        <li className="list-group-item">Health: {health} %</li>
         <li className="list-group-item">
           Age: {age.days} day(s), {age.hours} hour(s)
         </li>

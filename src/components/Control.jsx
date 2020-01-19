@@ -12,7 +12,7 @@ const Control = () => {
 
   function feedMe() {
     // alert('That was yummy! Thank you!');
-    setActionTaken(true);
+    setActionTaken('feedMe');
     setTimeout(() => {
       setHunger(0);
     }, 1000);
@@ -20,7 +20,7 @@ const Control = () => {
   }
 
   function putMeToBed() {
-    setActionTaken(true);
+    setActionTaken('putMeToBed');
     setTimeout(() => {
       setSleepy(0);
     }, 1000);

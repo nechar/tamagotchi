@@ -24,10 +24,9 @@ function getEmoji(emotion) {
         emoji: './asset/images/emoji/026-tired.svg',
         text: 'I am sleepy'
       };
-
     case 'sleeping':
       return {
-        emoji: './asset/images/emoji/020-sleeping.png.svg',
+        emoji: './asset/images/emoji/020-sleeping.svg',
         text: 'Good Night!'
       };
     case 'unwell':
