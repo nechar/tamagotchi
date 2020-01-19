@@ -9,9 +9,30 @@ function getEmoji(emotion) {
         emoji: './asset/images/emoji/026-tired.svg',
         text: 'I am hungry'
       };
+    case 'want-to-poop':
+      return {
+        emoji: './asset/images/emoji/026-tired.svg',
+        text: 'I want to go to the bathroom'
+      };
+    case 'sleepy':
+      return {
+        emoji: './asset/images/emoji/026-tired.svg',
+        text: 'I am sleepy'
+      };
+
+    case 'sleeping':
+      return {
+        emoji: './asset/images/emoji/020-sleeping.png.svg',
+        text: 'Good Night!'
+      };
+    case 'unwell':
+      return {
+        emoji: './asset/images/emoji/003-dizzy.svg',
+        text: `I feel unwell`
+      };
     case 'happy':
       return {
-        emoji: './asset/images/emoji/006-full.svg',
+        emoji: './asset/images/emoji/022-smiling face.svg',
         text: 'I am happy'
       };
     default:
