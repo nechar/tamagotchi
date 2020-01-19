@@ -2,41 +2,39 @@
 import { useGlobalState } from '../store';
 import React, { useEffect } from 'react';
 import { ONE_TOMAGOTCHI_HOUR } from '../config';
-let defaultTimeout, sleepTimeOut;
+let hungerTimeOut, sleepTimeOut;
 
 const Status = () => {
   const [age, setAge] = useGlobalState('age');
   const [health] = useGlobalState('health');
   const [sleepy, setSleepy] = useGlobalState('sleepy');
-  const [wantToPoop, setWantToPoop] = useGlobalState('wantToPoop');
+  const [wantToPoop] = useGlobalState('wantToPoop');
   const [hunger, setHunger] = useGlobalState('hunger');
-  const [, setEmotion] = useGlobalState('emotion');
   const [actionTaken, setActionTaken] = useGlobalState('actionTaken');
 
+  // Whenever there is a change in the age, the following block of code runs.
   useEffect(() => {
-    defaultTimeout = setTimeout(() => {
-      if (wantToPoop < 100) {
-        setWantToPoop(wantToPoop + 5);
-      }
-      if (hunger < 100) {
-        setHunger(hunger + 10);
-      }
+    setTimeout(() => {
       if (age.hours < 24) {
         setAge({ ...age, hours: age.hours + 1 });
       } else {
         setAge({ days: age.days + 1, hours: 0 });
       }
-      if (hunger >= 80) {
-        setEmotion('hungry');
-      } else if (sleepy >= 80) {
-        setEmotion('sleepy');
-      } else {
-        setEmotion('happy');
+    }, ONE_TOMAGOTCHI_HOUR);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [age]);
+
+  // Whenever there is a change in the hunger, the following block of code runs.
+  useEffect(() => {
+    hungerTimeOut = setTimeout(() => {
+      if (hunger < 100) {
+        setHunger(hunger + 10);
       }
     }, ONE_TOMAGOTCHI_HOUR);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hunger]);
 
+  // Whenever there is a change in the sleepy, the following block of code runs.
   useEffect(() => {
     sleepTimeOut = setTimeout(() => {
       if (sleepy < 100) {
@@ -46,9 +44,10 @@ const Status = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sleepy]);
 
+  // Whenever there is an action, the following block of code runs.
   useEffect(() => {
     if (actionTaken === 'feedMe') {
-      clearTimeout(defaultTimeout);
+      clearTimeout(hungerTimeOut);
       setActionTaken(null);
     }
     if (actionTaken === 'putMeToBed') {

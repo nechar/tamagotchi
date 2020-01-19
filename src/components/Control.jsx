@@ -7,7 +7,6 @@ import { useGlobalState } from '../store';
 const Control = () => {
   const [, setSleepy] = useGlobalState('sleepy');
   const [, setHunger] = useGlobalState('hunger');
-  const [emotion, setEmotion] = useGlobalState('emotion');
   const [actionTaken, setActionTaken] = useGlobalState('actionTaken');
 
   function feedMe() {
@@ -15,16 +14,14 @@ const Control = () => {
     setActionTaken('feedMe');
     setTimeout(() => {
       setHunger(0);
-    }, 1000);
-    setEmotion('just-eaten');
+    }, 10);
   }
 
   function putMeToBed() {
     setActionTaken('putMeToBed');
     setTimeout(() => {
       setSleepy(0);
-    }, 1000);
-    setEmotion('sleeping');
+    }, 10);
     // alert('Goodnight, Owen! Have a sweet dream!');
   }
 

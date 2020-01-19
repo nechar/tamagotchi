@@ -1,56 +1,22 @@
 /* Global State Management */
 import { useGlobalState } from '../store/index';
 import React from 'react';
-
-function getEmoji(emotion) {
-  switch (emotion) {
-    case 'hungry':
-      return {
-        emoji: './asset/images/emoji/028-winking face.svg',
-        text: 'I am hungry'
-      };
-    case 'just-eaten':
-      return {
-        emoji: './asset/images/emoji/006-full.svg',
-        text: 'Yummy!'
-      };
-    case 'want-to-poop':
-      return {
-        emoji: './asset/images/emoji/003-dizzy.svg',
-        text: 'I want to go to the bathroom'
-      };
-    case 'sleepy':
-      return {
-        emoji: './asset/images/emoji/026-tired.svg',
-        text: 'I am sleepy'
-      };
-    case 'sleeping':
-      return {
-        emoji: './asset/images/emoji/020-sleeping.svg',
-        text: 'Good Night!'
-      };
-    case 'unwell':
-      return {
-        emoji: './asset/images/emoji/008-vomiting.svg',
-        text: `I feel unwell`
-      };
-    case 'happy':
-      return {
-        emoji: './asset/images/emoji/022-smiling face.svg',
-        text: 'I am happy'
-      };
-    default:
-      return null;
-  }
-}
+import { getEmoji } from '../utils/EmojiHelper';
 
 const Emoji = () => {
-  const [emotion] = useGlobalState('emotion');
-  // const [sleepy] = useGlobalState('sleepy');
-  // const [wantToPoop] = useGlobalState('wantToPoop');
-  // const [age] = useGlobalState('age');
-  // const [hunger] = useGlobalState('age');
-  const emoji = getEmoji(emotion);
+  let emoji;
+
+  const [sleepy] = useGlobalState('sleepy');
+  const [hunger] = useGlobalState('hunger');
+
+  if (hunger >= 80) {
+    emoji = getEmoji('hungry');
+  } else if (sleepy >= 80) {
+    emoji = getEmoji('sleepy');
+  } else {
+    emoji = getEmoji('happy');
+  }
+
   return (
     <div>
       <style jsx="true">{`
