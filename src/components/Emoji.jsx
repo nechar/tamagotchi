@@ -9,14 +9,17 @@ const Emoji = () => {
   const [sleepy] = useGlobalState('sleepy');
   const [hunger] = useGlobalState('hunger');
 
-  if (hunger >= 80) {
+  if (hunger <= 10) {
+    emoji = getEmoji('just-eaten');
+  } else if (sleepy <= 10) {
+    emoji = getEmoji('sleeping');
+  } else if (hunger >= 80) {
     emoji = getEmoji('hungry');
   } else if (sleepy >= 80) {
     emoji = getEmoji('sleepy');
   } else {
     emoji = getEmoji('happy');
   }
-
   return (
     <div>
       <style jsx="true">{`

@@ -7,21 +7,21 @@ import { useGlobalState } from '../store';
 const Control = () => {
   const [, setSleepy] = useGlobalState('sleepy');
   const [, setHunger] = useGlobalState('hunger');
-  const [actionTaken, setActionTaken] = useGlobalState('actionTaken');
+  const [, setActionTaken] = useGlobalState('actionTaken');
 
   function feedMe() {
     // alert('That was yummy! Thank you!');
     setActionTaken('feedMe');
     setTimeout(() => {
       setHunger(0);
-    }, 10);
+    }, 1);
   }
 
   function putMeToBed() {
     setActionTaken('putMeToBed');
     setTimeout(() => {
       setSleepy(0);
-    }, 10);
+    }, 1);
     // alert('Goodnight, Owen! Have a sweet dream!');
   }
 
