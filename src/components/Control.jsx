@@ -7,12 +7,16 @@ import { useGlobalState } from '../store';
 const Control = () => {
   const [, setSleepy] = useGlobalState('sleepy');
   const [, setHunger] = useGlobalState('hunger');
+  const [emotion, setEmotion] = useGlobalState('emotion');
 
   function feedMe() {
+    alert('That was yummy! Thank you!');
     setHunger(0);
+    setEmotion('just-eaten');
   }
 
   function putMeToBed() {
+    alert('Goodnight, Owen! Have a sweet dream!');
     setSleepy(0);
   }
 

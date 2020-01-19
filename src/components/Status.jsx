@@ -1,6 +1,6 @@
 /* Global State Management */
 import { useGlobalState } from '../store';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ONE_TOMAGOTCHI_HOUR } from '../config';
 
 const Status = () => {
@@ -9,31 +9,33 @@ const Status = () => {
   const [sleepy, setSleepy] = useGlobalState('sleepy');
   const [wantToPoop, setWantToPoop] = useGlobalState('wantToPoop');
   const [hunger, setHunger] = useGlobalState('hunger');
-  const [, setEmotion] = useGlobalState('emotion');
+  const [emotion, setEmotion] = useGlobalState('emotion');
 
-  setTimeout(() => {
-    if (sleepy < 100) {
-      setSleepy(sleepy + 5);
-    }
-    if (wantToPoop < 100) {
-      setWantToPoop(wantToPoop + 5);
-    }
-    if (hunger < 100) {
-      setHunger(hunger + 20);
-    }
-    if (age.hours < 24) {
-      setAge({ ...age, hours: age.hours + 1 });
-    } else {
-      setAge({ days: age.days + 1, hours: 0 });
-    }
-    if (hunger >= 80) {
-      setEmotion('hungry');
-    } else if (sleepy >= 80) {
-      setEmotion('sleepy');
-    } else {
-      setEmotion('happy');
-    }
-  }, ONE_TOMAGOTCHI_HOUR);
+  useEffect(() => {
+    setTimeout(() => {
+      if (sleepy < 100) {
+        setSleepy(sleepy + 5);
+      }
+      if (wantToPoop < 100) {
+        setWantToPoop(wantToPoop + 5);
+      }
+      if (hunger < 100) {
+        setHunger(hunger + 10);
+      }
+      if (age.hours < 24) {
+        setAge({ ...age, hours: age.hours + 1 });
+      } else {
+        setAge({ days: age.days + 1, hours: 0 });
+      }
+      if (hunger >= 80) {
+        setEmotion('hungry');
+      } else if (sleepy >= 80) {
+        setEmotion('sleepy');
+      } else {
+        setEmotion('happy');
+      }
+    }, ONE_TOMAGOTCHI_HOUR);
+  }, [sleepy]);
 
   return (
     <section>

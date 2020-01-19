@@ -9,6 +9,11 @@ function getEmoji(emotion) {
         emoji: './asset/images/emoji/028-winking face.svg',
         text: 'I am hungry'
       };
+    case 'just-eaten':
+      return {
+        emoji: './asset/images/emoji/006-full.svg',
+        text: 'Yummy!'
+      };
     case 'want-to-poop':
       return {
         emoji: './asset/images/emoji/003-dizzy.svg',
