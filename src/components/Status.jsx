@@ -1,10 +1,11 @@
 /* Global State Management */
 import { useGlobalState } from '../store';
 import React from 'react';
+import { ONE_TOMAGOTCHI_HOUR } from '../config';
 
 const Status = () => {
   const [age, setAge] = useGlobalState('age');
-  const [health, setHealth] = useGlobalState('health');
+  const [health] = useGlobalState('health');
   const [sleepy, setSleepy] = useGlobalState('sleepy');
   const [wantToPoop, setWantToPoop] = useGlobalState('wantToPoop');
   const [hunger, setHunger] = useGlobalState('hunger');
@@ -24,7 +25,7 @@ const Status = () => {
     } else {
       setAge({ days: age.days + 1, hours: 0 });
     }
-  }, 1000 * 10);
+  }, ONE_TOMAGOTCHI_HOUR);
 
   return (
     <section>
