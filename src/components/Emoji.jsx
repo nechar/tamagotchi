@@ -11,11 +11,14 @@ const Emoji = () => {
   const [age] = useGlobalState('age');
   const [sleepy] = useGlobalState('sleepy');
   const [hunger] = useGlobalState('hunger');
+  const [wantToPoop] = useGlobalState('wantToPoop');
 
   if (age.days >= TOMAGOTCHI_LIFE_EXPECTANCY) {
     emoji = getEmoji('died-from-age');
   } else if (health === 0) {
     emoji = getEmoji('died-from-hunger');
+  } else if (wantToPoop <= 10) {
+    emoji = getEmoji('pooping');
   } else if (hunger <= 10) {
     emoji = getEmoji('eating');
   } else if (sleepy <= 20) {

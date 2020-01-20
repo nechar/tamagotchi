@@ -3,13 +3,13 @@ import { useGlobalState } from '../store';
 import React, { useEffect } from 'react';
 import { ONE_TOMAGOTCHI_HOUR, TOMAGOTCHI_LIFE_EXPECTANCY } from '../config';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-let hungerTimeOut, sleepTimeOut, ageTimeOut, healthTimeout;
+let hungerTimeOut, sleepTimeOut, ageTimeOut, healthTimeout, wantToPoopTimeOut;
 
 const Status = () => {
   const [age, setAge] = useGlobalState('age');
   const [health, setHealth] = useGlobalState('health');
   const [sleepy, setSleepy] = useGlobalState('sleepy');
-  const [wantToPoop] = useGlobalState('wantToPoop');
+  const [wantToPoop, setWantToPoop] = useGlobalState('wantToPoop');
   const [hunger, setHunger] = useGlobalState('hunger');
   const [actionTaken, setActionTaken] = useGlobalState('actionTaken');
 
@@ -34,6 +34,18 @@ const Status = () => {
     }, ONE_TOMAGOTCHI_HOUR);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sleepy]);
+
+  // Whenever there is a change in the sleepy, the following block of code runs.
+  useEffect(() => {
+    wantToPoopTimeOut = setTimeout(() => {
+      if (wantToPoop < 100) {
+        setWantToPoop(wantToPoop + 5);
+      } else {
+        setWantToPoop(0);
+      }
+    }, ONE_TOMAGOTCHI_HOUR);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [wantToPoop]);
 
   // Whenever there is a change in the age, the following block of code runs.
   useEffect(() => {
