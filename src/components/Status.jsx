@@ -2,27 +2,15 @@
 import { useGlobalState } from '../store';
 import React, { useEffect } from 'react';
 import { ONE_TOMAGOTCHI_HOUR } from '../config';
-let hungerTimeOut, sleepTimeOut;
+let hungerTimeOut, sleepTimeOut, ageTimeOut;
 
 const Status = () => {
   const [age, setAge] = useGlobalState('age');
-  const [health] = useGlobalState('health');
+  const [health, setHealth] = useGlobalState('health');
   const [sleepy, setSleepy] = useGlobalState('sleepy');
   const [wantToPoop] = useGlobalState('wantToPoop');
   const [hunger, setHunger] = useGlobalState('hunger');
   const [actionTaken, setActionTaken] = useGlobalState('actionTaken');
-
-  // Whenever there is a change in the age, the following block of code runs.
-  useEffect(() => {
-    setTimeout(() => {
-      if (age.hours < 24) {
-        setAge({ ...age, hours: age.hours + 1 });
-      } else {
-        setAge({ days: age.days + 1, hours: 0 });
-      }
-    }, ONE_TOMAGOTCHI_HOUR);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [age]);
 
   // Whenever there is a change in the hunger, the following block of code runs.
   useEffect(() => {
@@ -46,6 +34,23 @@ const Status = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sleepy]);
 
+  // Whenever there is a change in the age, the following block of code runs.
+  useEffect(() => {
+    ageTimeOut = setTimeout(() => {
+      if (age.hours < 24) {
+        setAge({ ...age, hours: age.hours + 1 });
+      } else {
+        setAge({ days: age.days + 1, hours: 0 });
+      }
+      if (hunger === 100) {
+        setHealth(health - 10);
+      } else if (health < 100) {
+        setHealth(health + 0.25);
+      }
+    }, ONE_TOMAGOTCHI_HOUR);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [age]);
+
   // Whenever there is an action, the following block of code runs.
   useEffect(() => {
     if (actionTaken === 'feedMe') {
@@ -58,6 +63,12 @@ const Status = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actionTaken]);
+
+  if (health === 0) {
+    clearTimeout(hungerTimeOut);
+    clearTimeout(sleepTimeOut);
+    clearTimeout(ageTimeOut);
+  }
 
   return (
     <section>
