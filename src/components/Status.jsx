@@ -101,6 +101,7 @@ const Status = () => {
 
   return (
     <section>
+      <h2>Status:</h2>
       <ul className="list-group">
         <li className="list-group-item">
           Health: {health} %

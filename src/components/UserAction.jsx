@@ -25,7 +25,7 @@ const UserAction = () => {
 
   return (
     <div className="mt-5">
-      <h1>Take an action:</h1>
+      <h2>Take an action:</h2>
       <div className="row center-text-align">
         <div className="col">
           <Button
