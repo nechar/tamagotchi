@@ -24,6 +24,8 @@ const Emoji = () => {
     emoji = getEmoji('pooping');
   } else if (hunger <= 10) {
     emoji = getEmoji('eating');
+  } else if (health <= 20) {
+    emoji = getEmoji('unwell');
   } else if (sleepy <= 20) {
     emoji = getEmoji('sleeping');
   } else if (hunger >= 80) {
