@@ -4,13 +4,12 @@ import Button from 'react-bootstrap/Button';
 /* Global State Management */
 import { useGlobalState } from '../store';
 
-const Control = () => {
+const UserAction = () => {
   const [, setSleepy] = useGlobalState('sleepy');
   const [, setHunger] = useGlobalState('hunger');
   const [, setActionTaken] = useGlobalState('actionTaken');
 
   function feedMe() {
-    // alert('That was yummy! Thank you!');
     setActionTaken('feedMe');
     setTimeout(() => {
       setHunger(0);
@@ -22,7 +21,6 @@ const Control = () => {
     setTimeout(() => {
       setSleepy(0);
     }, 1);
-    // alert('Goodnight, Owen! Have a sweet dream!');
   }
 
   return (
@@ -40,4 +38,4 @@ const Control = () => {
   );
 };
 
-export default Control;
+export default UserAction;

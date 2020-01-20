@@ -1,5 +1,5 @@
 import React from 'react';
-import Control from './components/Control.jsx';
+import UserAction from './components/UserAction.jsx';
 import Status from './components/Status.jsx';
 import Emoji from './components/Emoji.jsx';
 
@@ -18,7 +18,7 @@ const App = () => {
             <Emoji />
           </div>
           <div className="col">
-            <Control />
+            <UserAction />
           </div>
         </div>
       </div>

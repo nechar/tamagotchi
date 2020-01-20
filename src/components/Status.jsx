@@ -39,6 +39,8 @@ const Status = () => {
     sleepTimeOut = setTimeout(() => {
       if (sleepy < 100) {
         setSleepy(sleepy + 5);
+      } else {
+        setSleepy(0);
       }
     }, ONE_TOMAGOTCHI_HOUR);
     // eslint-disable-next-line react-hooks/exhaustive-deps

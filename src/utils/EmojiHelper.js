@@ -5,7 +5,7 @@ export function getEmoji(emotion) {
         emoji: './asset/images/emoji/028-winking face.svg',
         text: 'I am hungry'
       };
-    case 'just-eaten':
+    case 'eating':
       return {
         emoji: './asset/images/emoji/006-full.svg',
         text: 'Yummy!'
