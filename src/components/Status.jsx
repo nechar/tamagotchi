@@ -141,7 +141,7 @@ const Status = () => {
           Age: {age.days} day(s), {age.hours} hour(s)
           <br />
           <ProgressBar
-            now={age.days}
+            now={age.days + age.hours / 24}
             min={0}
             max={TOMAGOTCHI_LIFE_EXPECTANCY}
             variant={
