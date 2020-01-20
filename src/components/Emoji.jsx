@@ -2,15 +2,17 @@
 import { useGlobalState } from '../store/index';
 import React from 'react';
 import { getEmoji } from '../utils/EmojiHelper';
+import { TOMAGOTCHI_LIFE_EXPECTANCY } from '../config';
 
 const Emoji = () => {
   let emoji;
 
   const [health] = useGlobalState('health');
+  const [age] = useGlobalState('age');
   const [sleepy] = useGlobalState('sleepy');
   const [hunger] = useGlobalState('hunger');
 
-  if (health === 0) {
+  if (health === 0 || age.days >= TOMAGOTCHI_LIFE_EXPECTANCY) {
     emoji = getEmoji('died');
   } else if (hunger <= 10) {
     emoji = getEmoji('eating');

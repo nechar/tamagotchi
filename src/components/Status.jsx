@@ -1,8 +1,9 @@
 /* Global State Management */
 import { useGlobalState } from '../store';
 import React, { useEffect } from 'react';
-import { ONE_TOMAGOTCHI_HOUR } from '../config';
-let hungerTimeOut, sleepTimeOut, ageTimeOut;
+import { ONE_TOMAGOTCHI_HOUR, TOMAGOTCHI_LIFE_EXPECTANCY } from '../config';
+import ProgressBar from 'react-bootstrap/ProgressBar';
+let hungerTimeOut, sleepTimeOut, ageTimeOut, healthTimeout;
 
 const Status = () => {
   const [age, setAge] = useGlobalState('age');
@@ -42,8 +43,19 @@ const Status = () => {
       } else {
         setAge({ days: age.days + 1, hours: 0 });
       }
+    }, ONE_TOMAGOTCHI_HOUR);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [age]);
+
+  // Whenever there is an age, the following block of code runs.
+  useEffect(() => {
+    healthTimeout = setTimeout(() => {
       if (hunger === 100) {
-        setHealth(health - 10);
+        if (health < 10) {
+          setHealth(0);
+        } else {
+          setHealth(health - 10);
+        }
       } else if (health < 100) {
         setHealth(health + 0.25);
       }
@@ -55,6 +67,7 @@ const Status = () => {
   useEffect(() => {
     if (actionTaken === 'feedMe') {
       clearTimeout(hungerTimeOut);
+      clearTimeout(healthTimeout);
       setActionTaken(null);
     }
     if (actionTaken === 'putMeToBed') {
@@ -64,7 +77,7 @@ const Status = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actionTaken]);
 
-  if (health === 0) {
+  if (health <= 0 || age.days >= TOMAGOTCHI_LIFE_EXPECTANCY) {
     clearTimeout(hungerTimeOut);
     clearTimeout(sleepTimeOut);
     clearTimeout(ageTimeOut);
@@ -73,12 +86,34 @@ const Status = () => {
   return (
     <section>
       <ul className="list-group">
-        <li className="list-group-item">Health: {health} %</li>
-        <li className="list-group-item">Hunger: {hunger} %</li>
-        <li className="list-group-item">Sleepy: {sleepy} %</li>
-        <li className="list-group-item">WantToPoop: {wantToPoop} %</li>
+        <li className="list-group-item">
+          Health: {health} %
+          <br />
+          <ProgressBar now={health} />
+        </li>
+        <li className="list-group-item">
+          Hunger: {hunger} %
+          <br />
+          <ProgressBar now={hunger} />
+        </li>
+        <li className="list-group-item">
+          Sleepy: {sleepy} %
+          <br />
+          <ProgressBar now={sleepy} />
+        </li>
+        <li className="list-group-item">
+          WantToPoop: {wantToPoop} %
+          <br />
+          <ProgressBar now={wantToPoop} />
+        </li>
         <li className="list-group-item">
           Age: {age.days} day(s), {age.hours} hour(s)
+          <br />
+          <ProgressBar
+            now={age.days}
+            min={0}
+            max={TOMAGOTCHI_LIFE_EXPECTANCY}
+          />
         </li>
       </ul>
     </section>

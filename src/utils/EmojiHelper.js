@@ -35,6 +35,13 @@ export function getEmoji(emotion) {
         emoji: './asset/images/emoji/022-smiling face.svg',
         text: 'I am happy'
       };
+
+    case 'pooping':
+      return {
+        emoji: './asset/images/emoji/014-grinning.svg',
+        text:
+          'Excuse me! I need to do some private business, please look aside.'
+      };
     case 'died':
       return {
         emoji: './asset/images/emoji/004-expressionless.svg',
