@@ -1,8 +1,10 @@
-/* Global State Management */
-import { useGlobalState } from '../store';
 import React, { useEffect } from 'react';
 import { ONE_TOMAGOTCHI_HOUR, TOMAGOTCHI_LIFE_EXPECTANCY } from '../config';
 import ProgressBar from 'react-bootstrap/ProgressBar';
+
+/* Global State Management */
+import { useGlobalState } from '../store';
+
 let hungerTimeOut, sleepTimeOut, ageTimeOut, healthTimeout, wantToPoopTimeOut;
 
 const Status = () => {
@@ -89,6 +91,7 @@ const Status = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actionTaken]);
 
+  // In any case, if Tomagotchi dies for any reason, we stop all the timers which are counting down
   if (health <= 0 || age.days >= TOMAGOTCHI_LIFE_EXPECTANCY) {
     clearTimeout(hungerTimeOut);
     clearTimeout(sleepTimeOut);

@@ -1,8 +1,9 @@
-/* Global State Management */
-import { useGlobalState } from '../store/index';
 import React from 'react';
 import { getEmoji } from '../utils/EmojiHelper';
 import { TOMAGOTCHI_LIFE_EXPECTANCY } from '../config';
+
+/* Global State Management */
+import { useGlobalState } from '../store/index';
 
 const Emoji = () => {
   let emoji;
@@ -13,6 +14,8 @@ const Emoji = () => {
   const [hunger] = useGlobalState('hunger');
   const [wantToPoop] = useGlobalState('wantToPoop');
 
+  // Setting up emoji face and based on the current status of Tomagotchi
+  // The top ones have the highest priority and the bottom ones have the lowest
   if (age.days >= TOMAGOTCHI_LIFE_EXPECTANCY) {
     emoji = getEmoji('died-from-age');
   } else if (health === 0) {
