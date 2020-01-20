@@ -11,14 +11,12 @@ const App = () => {
     <GlobalStateProvider>
       <div className="m-2">
         <div className="row">
-          <div className="col-2">
-            <UserAction />
-          </div>
-          <div className="col-5">
+          <div className="col">
             <Emoji />
           </div>
-          <div className="col-5">
+          <div className="col">
             <Status />
+            <UserAction />
           </div>
         </div>
       </div>

@@ -103,7 +103,9 @@ const Status = () => {
           <br />
           <ProgressBar
             now={health}
-            variant={health <= 20 ? 'danger' : 'info'}
+            variant={
+              health <= 20 ? 'danger' : health <= 90 ? 'warning' : 'primary'
+            }
           />
         </li>
         <li className="list-group-item">
@@ -111,7 +113,7 @@ const Status = () => {
           <br />
           <ProgressBar
             now={hunger}
-            variant={hunger >= 80 ? 'danger' : 'info'}
+            variant={hunger >= 80 ? 'danger' : 'primary'}
           />
         </li>
         <li className="list-group-item">
@@ -119,7 +121,7 @@ const Status = () => {
           <br />
           <ProgressBar
             now={sleepy}
-            variant={sleepy >= 80 ? 'danger' : 'info'}
+            variant={sleepy >= 80 ? 'danger' : 'primary'}
           />
         </li>
         <li className="list-group-item">
@@ -127,7 +129,7 @@ const Status = () => {
           <br />
           <ProgressBar
             now={wantToPoop}
-            variant={wantToPoop >= 80 ? 'danger' : 'info'}
+            variant={wantToPoop >= 80 ? 'danger' : 'primary'}
           />
         </li>
         <li className="list-group-item">
@@ -138,7 +140,9 @@ const Status = () => {
             min={0}
             max={TOMAGOTCHI_LIFE_EXPECTANCY}
             variant={
-              age.days >= TOMAGOTCHI_LIFE_EXPECTANCY * 0.7 ? 'danger' : 'info'
+              age.days >= TOMAGOTCHI_LIFE_EXPECTANCY * 0.7
+                ? 'danger'
+                : 'primary'
             }
           />
         </li>
