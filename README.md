@@ -10,4 +10,7 @@
 
 `http://localhost:3000/` to view the project
 
+You may want to change the value of `ONE_TOMAGOTCHI_HOUR` from `config.js` file based on what you like test.
+(I recommend speeding up only to test the death by age feature)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
