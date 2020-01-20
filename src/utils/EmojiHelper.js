@@ -42,10 +42,18 @@ export function getEmoji(emotion) {
         text:
           'Excuse me! I need to do some private business, please look aside.'
       };
-    case 'died':
+    case 'died-from-hunger':
       return {
         emoji: './asset/images/emoji/004-expressionless.svg',
-        text: 'I died'
+        text:
+          'I died from hunger. You have not been a good owner. Try feeding him more often next time.'
+      };
+
+    case 'died-from-age':
+      return {
+        emoji: './asset/images/emoji/004-expressionless.svg',
+        text:
+          'I died from old age. But congratulations for taking such a good care of him. You have been a great owner.'
       };
 
     default:
