@@ -4,11 +4,9 @@
 
 `cd tamagotchi` to get into the directory
 
-`npm install` or `yarn install` to install the dependencies
+`yarn install` or `npm install` to install the dependencies
 
-`npm run dev` or `yarn dev` to run the development server
-
-`npm run test --detectOpenHandles` or `yarn test --detectOpenHandles` to run the test scripts
+`yarn start` or `npm run start` to run the development server
 
 `http://localhost:3000/` to view the project
 
