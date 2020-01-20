@@ -32,8 +32,7 @@ const Emoji = () => {
     <div>
       <style jsx="true">{`
         .emoji {
-          height: 150px;
-          width: 150px;
+          width: 70%;
         }
       `}</style>
       <div className="center-text-align">

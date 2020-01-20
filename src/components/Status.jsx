@@ -89,22 +89,34 @@ const Status = () => {
         <li className="list-group-item">
           Health: {health} %
           <br />
-          <ProgressBar now={health} />
+          <ProgressBar
+            now={health}
+            variant={health <= 20 ? 'danger' : 'info'}
+          />
         </li>
         <li className="list-group-item">
           Hunger: {hunger} %
           <br />
-          <ProgressBar now={hunger} />
+          <ProgressBar
+            now={hunger}
+            variant={hunger >= 80 ? 'danger' : 'info'}
+          />
         </li>
         <li className="list-group-item">
           Sleepy: {sleepy} %
           <br />
-          <ProgressBar now={sleepy} />
+          <ProgressBar
+            now={sleepy}
+            variant={sleepy >= 80 ? 'danger' : 'info'}
+          />
         </li>
         <li className="list-group-item">
           WantToPoop: {wantToPoop} %
           <br />
-          <ProgressBar now={wantToPoop} />
+          <ProgressBar
+            now={wantToPoop}
+            variant={wantToPoop >= 80 ? 'danger' : 'info'}
+          />
         </li>
         <li className="list-group-item">
           Age: {age.days} day(s), {age.hours} hour(s)
@@ -113,6 +125,9 @@ const Status = () => {
             now={age.days}
             min={0}
             max={TOMAGOTCHI_LIFE_EXPECTANCY}
+            variant={
+              age.days >= TOMAGOTCHI_LIFE_EXPECTANCY * 0.7 ? 'danger' : 'info'
+            }
           />
         </li>
       </ul>
