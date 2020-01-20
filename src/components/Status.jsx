@@ -93,6 +93,7 @@ const Status = () => {
     clearTimeout(hungerTimeOut);
     clearTimeout(sleepTimeOut);
     clearTimeout(ageTimeOut);
+    clearTimeout(wantToPoopTimeOut);
   }
 
   return (
