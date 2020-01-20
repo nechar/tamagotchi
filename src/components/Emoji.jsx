@@ -6,10 +6,13 @@ import { getEmoji } from '../utils/EmojiHelper';
 const Emoji = () => {
   let emoji;
 
+  const [health] = useGlobalState('health');
   const [sleepy] = useGlobalState('sleepy');
   const [hunger] = useGlobalState('hunger');
 
-  if (hunger <= 10) {
+  if (health === 0) {
+    emoji = getEmoji('died');
+  } else if (hunger <= 10) {
     emoji = getEmoji('eating');
   } else if (sleepy <= 20) {
     emoji = getEmoji('sleeping');

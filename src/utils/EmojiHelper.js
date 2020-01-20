@@ -35,6 +35,12 @@ export function getEmoji(emotion) {
         emoji: './asset/images/emoji/022-smiling face.svg',
         text: 'I am happy'
       };
+    case 'died':
+      return {
+        emoji: './asset/images/emoji/004-expressionless.svg',
+        text: 'I died'
+      };
+
     default:
       return null;
   }
