@@ -35,7 +35,6 @@ export function getEmoji(emotion) {
         emoji: './asset/images/emoji/022-smiling face.svg',
         text: 'I am happy'
       };
-
     case 'pooping':
       return {
         emoji: './asset/images/emoji/014-grinning.svg',
@@ -55,7 +54,6 @@ export function getEmoji(emotion) {
         text:
           'I died from old age. But congratulations for taking such a good care of him. You have been a great owner.'
       };
-
     default:
       return null;
   }
