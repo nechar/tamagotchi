@@ -20,6 +20,8 @@ We don't expect you to be a designer, we are more interested in how you design, 
 
 # Solution
 
+The codebase in this repository is the solution to the problem mentioned above.
+
 ## Instructions to run
 
 `git clone https://github.com/nechar/tamagotchi.git` to clone the repo
